@@ -1,50 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First HTML Doc Test</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  
+  
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  
 </head>
 <body>
-    <div style="color: white;">
-        <h1>Heading</h1>
-        <p>This is paragraph 1</p>
-    </div>
-    <!-- Remember to add more information here -->
+  
+<div id="hw_map"></div>
 
-    <p>This is <sup>superscripted</sup> text.</p>
+<script type="text/javascript">
 
-    <a href="https://www.w3schools.com/html/html_formatting.asp">This is a useful website for text formatting in HTML</a>
-    <div style="color: aqua;">
-        <h1>This is heading 1</h1>
-        <h2>And this is heading 2</h2>
-    </div>
-    
-    <p><font color="blue"><bold>Very Cool.</bold></font></p> 
-    <body style="background-color:green;">
-    <a href="https://www.w3schools.com/css/default.asp"> Link to CSS Tutorial</a>
-    <table border = "2" cellpadding = "5%">
-        <tr>
-            <th>Name 1</th>
-            <th>Name 2</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>A</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>B</td>
-        </tr>
-    </table>
-    <img src = "leopard.jpg" /> 
+  var spec2 = "js/hw_map.vg.json";
+  vegaEmbed('#hw_map', spec2).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
 
-    <dl>
-        <dt>Coffee</dt>
-        <dd>- black hot drink</dd>
-        <dt>Milk</dt>
-        <dd>- white cold drink</dd>
-      </dl>
 </body>
 </html>
