@@ -32,7 +32,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/cleaned_df.csv"
+              "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/clean_merged.csv"
             },
             "key": "Country",
             "fields": ["Happiness score"]
