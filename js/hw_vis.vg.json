@@ -1,0 +1,88 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 400,
+    "title": "GDP vs Happiness Score",
+    "data": {
+      "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
+    },
+    "params": [
+      {
+        "name": "Year_selection",
+        "value": 2022,
+        "bind": {
+          "input": "range",
+          "min": 2006,
+          "max": 2022,
+          "step": 1,
+          "name": "Year Selection: "
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "datum.Year == Year_selection"}
+    ],
+    "layer": [
+      {
+        "mark": "circle",
+        "encoding": {
+          "x": {
+            "field": "Log GDP Per Capita",
+            "type": "quantitative",
+            "scale": {"domain": [5, 12]}
+          },
+          "y": {
+            "field": "Life Ladder",
+            "type": "quantitative",
+            "title": "Happiness Score"
+          },
+          "color": {
+            "field": "income_level",
+            "type": "nominal"
+          },
+          "size": {
+            "field": "Perceptions Of Corruption",
+            "type": "quantitative"
+          },
+          "tooltip": [
+            {"field": "Country", "type": "nominal"},
+            {"field": "Log GDP Per Capita", "format": ".2f"},
+            {"field": "income_level", "type": "nominal"},
+            {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score", "format": ".2f"},
+            {"field": "Perceptions Of Corruption", "type": "quantitative", "format": ","}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "right",
+          "baseline": "middle",
+          "dx": -12,
+          "fontSize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {"field": "Country", "type": "nominal"},
+          "x": {"field": "Log GDP Per Capita", "type": "quantitative"},
+          "y": {"field": "Life Ladder", "type": "quantitative"},
+          "color": {"value": "black"},
+          "opacity": {
+            "condition": {
+              "test": "datum['Country'] == 'Russia' || datum['Country'] == 'Afghanistan' || datum['Country'] == 'Australia' || datum['Country'] == 'India' || datum['Country'] == 'Chad' ||  datum['Country'] == 'Finland'",
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+            {"field": "Country", "type": "nominal"},
+            {"field": "Log GDP Per Capita", "format": ".2f"},
+            {"field": "income_level", "type": "nominal"},
+            {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score", "format": ".2f"},
+            {"field": "Perceptions Of Corruption", "type": "quantitative", "format": ","}
+          ]
+        }
+      }
+    ]
+  }
+  
