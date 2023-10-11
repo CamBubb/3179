@@ -9,7 +9,7 @@
     "params": [
       {
         "name": "xVariable",
-        "value": "Log GDP Per Capita",
+        "value": "Perceptions Of Corruption",
         "bind": {
           "input": "select",
           "options": ["Log GDP Per Capita", "Social Support", "Healthy Life Expectancy At Birth",

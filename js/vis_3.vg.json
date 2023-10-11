@@ -12,13 +12,11 @@
         "field": "Country",
         "oneOf": [
           "Finland",
-          "Isreal",
           "Denmark",
           "Iceland",
           "Sweden",
           "Malawi",
           "Zimbabwe",
-          "Sierra Leone",
           "Lebanon",
           "Afghanistan"
         ]
@@ -37,13 +35,11 @@
       "type": "nominal",
       "sort": [
         "Finland",
-        "Isreal",
         "Denmark",
         "Iceland",
         "Sweden",
         "Malawi",
         "Zimbabwe",
-        "Sierra Leone",
         "Lebanon",
         "Afghanistan"
       ]
@@ -70,8 +66,12 @@
     {
       "transform": [
         {"filter": {"field": "Year", "oneOf": [2006, 2022]}},
-        {"aggregate": [{"op": "mean", "field": "Life Ladder", "as": "mean_Life_Ladder"}],
-        "groupby": ["Country"]}
+        {
+          "aggregate": [
+            {"op": "mean", "field": "Life Ladder", "as": "mean_Life_Ladder"}
+          ],
+          "groupby": ["Country"]
+        }
       ],
       "mark": {"type": "point", "filled": true, "size": 150},
       "encoding": {
@@ -79,14 +79,11 @@
         "x": {"field": "mean_Life_Ladder"},
         "tooltip": [
           {
-            "field": "mean_Life_Ladder", 
-            "type": "quantitative", 
+            "field": "mean_Life_Ladder",
+            "type": "quantitative",
             "title": "Mean Happiness Score"
           },
-          {
-            "field": "Country", 
-            "type": "nominal"
-          }
+          {"field": "Country", "type": "nominal"}
         ],
         "color": {"value": "black"}
       }
