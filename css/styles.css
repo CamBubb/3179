@@ -20,14 +20,14 @@ body {
     display:flexbox ;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(202, 255, 159);
+    background-color: rgb(218, 218, 218);
 }
 
 
 /* Sections */
 .section {
-    min-width: 800px;
-    max-width: 800px;
+    min-width: 887px;
+    max-width: 887px;
     margin: 20px;
     padding: 20px;
     background-color: #fff;
@@ -48,7 +48,7 @@ body {
 }
 
 .section-title {
-    background-color: #cff9b0; /* Background color for Section 3 (footer) */
+    background-color: #ffffff; /* Background color for Section 3 (footer) */
 }
 
 .visualization {
