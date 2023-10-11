@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 200,
+  "title": "Happiness Score for Top and Botton 5 Countries",
+  "data": {
+    "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "field": "Country",
+        "oneOf": [
+          "Finland",
+          "Isreal",
+          "Denmark",
+          "Iceland",
+          "Sweden",
+          "Malawi",
+          "Zimbabwe",
+          "Sierra Leone",
+          "Lebanon",
+          "Afghanistan"
+        ]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Life Ladder",
+      "type": "quantitative",
+      "title": "Happiness Score",
+      "scale": {"domain": [1, 8.5]}
+    },
+    "y": {
+      "field": "Country",
+      "type": "nominal",
+      "sort": [
+        "Finland",
+        "Isreal",
+        "Denmark",
+        "Iceland",
+        "Sweden",
+        "Malawi",
+        "Zimbabwe",
+        "Sierra Leone",
+        "Lebanon",
+        "Afghanistan"
+      ]
+    },
+    "tooltip": [
+      {"field": "Country", "type": "nominal"},
+      {"field": "Year", "type": "nominal"},
+      {
+        "field": "Life Ladder",
+        "type": "quantitative",
+        "title": "Happiness Score",
+        "format": ".2f"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": "point",
+      "encoding": {
+        "detail": {"field": "Country", "type": "nominal"},
+        "color": {"value": "#db646f"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": {"field": "Year", "oneOf": [2006, 2022]}},
+        {"aggregate": [{"op": "mean", "field": "Life Ladder", "as": "mean_Life_Ladder"}],
+        "groupby": ["Country"]}
+      ],
+      "mark": {"type": "point", "filled": true, "size": 150},
+      "encoding": {
+        "y": {"field": "Country", "type": "nominal"},
+        "x": {"field": "mean_Life_Ladder"},
+        "tooltip": [
+          {
+            "field": "mean_Life_Ladder", 
+            "type": "quantitative", 
+            "title": "Mean Happiness Score"
+          },
+          {
+            "field": "Country", 
+            "type": "nominal"
+          }
+        ],
+        "color": {"value": "black"}
+      }
+    }
+  ]
+}

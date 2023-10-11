@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/Word_Happiness_Years.csv",
+    "format": {"parse": {"Year": "date"}}
+  },
+  "transform": [
+    {
+      "filter": {"field": "Year", "gt": "2006"}
+    }
+  ],
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "x": {"timeUnit": "year", "field": "Year", "title": "Year"},
+        "y": {"aggregate": "mean", "field": "Life Ladder",
+          "scale":{
+            "domain":[4,8]
+          }
+        },
+        "color": {
+          "field": "Broad Region",
+          "scale": {
+            "domain": ["Asia", "Europe", "Africa", "Latin America", "North America and ANZ"],
+            "range": ["#1f77b4", "#ff7f0e", "#33a02c", "#e31a1c", "#6a3d9a"]
+          }
+        }
+      }
+    }
+  ]
+}

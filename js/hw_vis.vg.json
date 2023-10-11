@@ -1,12 +1,35 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 500,
-    "height": 400,
+    "width": 400,
+    "height": 300,
     "title": "GDP vs Happiness Score",
     "data": {
       "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
     },
     "params": [
+      {
+        "name": "Income_selection",
+        "bind": {
+        "input": "select",
+          "options": [
+            null,
+            "High income",
+            "Low income",
+            "Lower middle income",
+            "Unknown",
+            "Upper middle income"
+          ],
+          "labels":[
+            "Show All",
+            "High income",
+            "Low income",
+            "Lower middle income",
+            "Unknown",
+            "Upper middle income"
+          ],
+          "name": "Income Level Selection: "
+        }
+      },
       {
         "name": "Year_selection",
         "value": 2022,
@@ -20,8 +43,10 @@
       }
     ],
     "transform": [
-      {"filter": "datum.Year == Year_selection"}
+      {"filter": "datum.Year == Year_selection"},
+      {"filter": "Income_selection == null || datum.income_level == Income_selection"}
     ],
+  
     "layer": [
       {
         "mark": "circle",
@@ -34,14 +59,16 @@
           "y": {
             "field": "Life Ladder",
             "type": "quantitative",
-            "title": "Happiness Score"
+            "title": "Happiness Score",
+            "scale": {"domain": [0, 10]}
           },
           "color": {
             "field": "income_level",
-            "type": "nominal"
+            "type": "nominal",
+            "title": "Income Level"
           },
           "size": {
-            "field": "Perceptions Of Corruption",
+            "field": "Social Support",
             "type": "quantitative"
           },
           "tooltip": [
@@ -49,7 +76,7 @@
             {"field": "Log GDP Per Capita", "format": ".2f"},
             {"field": "income_level", "type": "nominal"},
             {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score", "format": ".2f"},
-            {"field": "Perceptions Of Corruption", "type": "quantitative", "format": ","}
+            {"field": "Social Support", "type": "quantitative", "format": ","}
           ]
         }
       },
