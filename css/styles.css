@@ -1,32 +1,73 @@
-body *{
+/* Apply styles for the poster-like appearance */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2; /* Background color for the entire poster */
     font-family: 'Open Sans', sans-serif;
 }
+
+/* Poster Container */
+.poster-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-container {
+    width: 67.25%;
+    display:flexbox ;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(202, 255, 159);
+}
+
+
+/* Sections */
+.section {
+    min-width: 800px;
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-1 {
+    background-color: #ffffff; /* Background color for Section 1 */
+}
+
+.section-2 {
+    background-color: #ffffff; /* Background color for Section 2 */
+}
+
+.section-3 {
+    background-color: #ffffff; /* Background color for Section 3 (footer) */
+}
+
+.section-title {
+    background-color: #cff9b0; /* Background color for Section 3 (footer) */
+}
+
+.visualization {
+    margin: 20px 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Other CSS styles (you can keep your existing styles here) */
 
 h1 {
     font-weight: 900;
 }
 
-body {
-    background-color: rgb(229, 229, 229);
-}
-
-.page {
-    width: 925px;
-    background-color: white;
-    margin: auto;
-    padding: 50px;
-    padding-top: 30px;
-}
-
-.vis-container {
-    width: 100%;
-}
-
-
-.pure-g {
-    margin-bottom: 20px;
-}
-
 .small-font {
     font-size: 12px;
+}
+
+.map-visualization {
+    max-width: 100%; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the map within the main region */
 }
