@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 430,
     "height": 300,
-    "title": "Histogram Heatmap",
+    "title": "2D Histogram of Selected Variable vs Happiness Score",
     "data": {
         "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
     },
