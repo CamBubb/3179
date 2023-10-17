@@ -1,61 +1,72 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
-    "height": 200,
-    "title": "How Specific Variables Impact Happiness Score",
+    "width": 430,
+    "height": 300,
+    "title": "Histogram Heatmap",
     "data": {
-      "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
+        "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
+    },
+    "config": {
+        "background": "transparent",
+        "legend": {"orient": "bottom"}
     },
     "params": [
-      {
-        "name": "xVariable",
-        "value": "Perceptions Of Corruption",
-        "bind": {
-          "input": "select",
-          "options": ["Log GDP Per Capita", "Social Support", "Healthy Life Expectancy At Birth",
-          "Freedom To Make Life Choices", "Generosity", "Perceptions Of Corruption", "Confidence In National Government"]
+        {
+            "name": "xVariable",
+            "value": "Perceptions Of Corruption",
+            "bind": {
+                "input": "select",
+                "options": ["Log GDP Per Capita", "Social Support", "Healthy Life Expectancy At Birth",
+                    "Freedom To Make Life Choices", "Generosity", "Perceptions Of Corruption", "Confidence In National Government"]
+            }
+        },
+        {
+            "name": "Year_selection",
+            "value": 2022,
+            "bind": {
+                "input": "range",
+                "min": 2006,
+                "max": 2022,
+                "step": 1,
+                "name": "Year Selection: "
+            }
         }
-      },
-      {
-        "name": "Year_selection",
-        "value": 2022,
-        "bind": {
-          "input": "range",
-          "min": 2006,
-          "max": 2022,
-          "step": 1,
-          "name": "Year Selection: "
-        }
-      }
     ],
     "transform": [
-      {
-        "calculate": "datum[xVariable]",
-        "as": "xVariableValue"
-      },
-      {
-        "filter": "datum.Year == Year_selection"
-      }
+        {
+            "calculate": "datum[xVariable]",
+            "as": "xVariableValue"
+        },
+        {
+            "filter": "datum.Year == Year_selection"
+        }
     ],
     "mark": "rect",
     "encoding": {
-      "x": {
-        "bin": {"maxbins": 15},
-        "field": "xVariableValue",
-        "title": null
+        "x": {
+            "bin": { "maxbins": 15 },
+            "field": "xVariableValue",
+            "title": "Selected xVariable"
         },
-      "y": {
-        "bin": {"maxbins": 15}, 
-        "field": "Life Ladder",
-        "title": "Happiness Score"},
-      "color": {
-        "aggregate": "count",
-        "legend": {
-          "title": "Number of Countries",
-          "direction": "horizontal",
-          "gradientLength": 110
-        }
+        "y": {
+            "bin": { "maxbins": 15 },
+            "field": "Life Ladder",
+            "title": "Happiness Score"
+        },
+        "color": {
+            "aggregate": "count",
+            "legend": {
+                "title": "Count",
+                "direction": "horizontal",
+                "gradientLength": 110
+            },
+            "scale": {"scheme": "redpurple"}
+        },
+        "tooltip": [
+            {
+                "aggregate": "count"
+            }
+        ]
     }
-}
-}
+  }
   

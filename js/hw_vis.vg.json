@@ -1,12 +1,30 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
-    "height": 300,
-    "title": "GDP vs Happiness Score",
+    "width": 920,
+    "height": 395,
+    "title": "Bubble Plot of GDP vs Happiness Score",
     "data": {
       "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
     },
-    "params": [
+    "config": {
+      "background": "transparent",
+      "legend": {"orient": "bottom", 
+        "layout": {
+          "bottom": {
+            "anchor": "middle"
+          }
+        }
+      }
+    },
+    "params": [{
+      "name": "search_input",
+      "bind": {
+        "input": "search",
+        "placeholder": "Country",
+        "name": "Search: "
+      },
+      "value": ""
+      },
       {
         "name": "Income_selection",
         "bind": {
@@ -46,7 +64,6 @@
       {"filter": "datum.Year == Year_selection"},
       {"filter": "Income_selection == null || datum.income_level == Income_selection"}
     ],
-  
     "layer": [
       {
         "mark": "circle",
@@ -65,19 +82,35 @@
           "color": {
             "field": "income_level",
             "type": "nominal",
-            "title": "Income Level"
+            "title": "Income Level",
+            "scale": {"scheme": "accent"},
+            "sort": [
+              "Unknown",
+              "Low income",
+              "Lower middle income",
+              "Upper middle income",
+              "High income"
+            ]
           },
           "size": {
-            "field": "Social Support",
-            "type": "quantitative"
+            "field": "Confidence In National Government",
+            "type": "quantitative",
+            "title": "Confidence in Government"
           },
           "tooltip": [
             {"field": "Country", "type": "nominal"},
             {"field": "Log GDP Per Capita", "format": ".2f"},
-            {"field": "income_level", "type": "nominal"},
+            {"field": "income_level", "type": "nominal", "title": "Income Level"},
             {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score", "format": ".2f"},
-            {"field": "Social Support", "type": "quantitative", "format": ","}
-          ]
+            {"field": "Confidence In National Government", "type": "quantitative", "format": ","}
+          ],
+          "opacity": {
+            "condition": {
+              "test": "test(regexp(search_input,'i'),datum['Country'])",
+              "value": 0.8
+            },
+            "value": 0.1
+          }
         }
       },
       {
@@ -96,7 +129,7 @@
           "color": {"value": "black"},
           "opacity": {
             "condition": {
-              "test": "datum['Country'] == 'Russia' || datum['Country'] == 'Afghanistan' || datum['Country'] == 'Australia' || datum['Country'] == 'India' || datum['Country'] == 'Chad' ||  datum['Country'] == 'Finland'",
+              "test": "datum['Country'] == 'Afghanistan' || datum['Country'] == 'Finland' || datum['Country'] == 'Australia'",
               "value": 1
             },
             "value": 0
@@ -104,9 +137,9 @@
           "tooltip": [
             {"field": "Country", "type": "nominal"},
             {"field": "Log GDP Per Capita", "format": ".2f"},
-            {"field": "income_level", "type": "nominal"},
+            {"field": "income_level", "type": "nominal", "title": "Income Level"},
             {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score", "format": ".2f"},
-            {"field": "Perceptions Of Corruption", "type": "quantitative", "format": ","}
+            {"field": "Confidence In National Government", "type": "quantitative", "format": ","}
           ]
         }
       }

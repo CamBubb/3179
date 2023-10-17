@@ -1,91 +1,100 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400,
-  "height": 200,
-  "title": "Happiness Score for Top and Botton 5 Countries",
-  "data": {
-    "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"
+  "title": "Ranged Dot Plot of Happiness for Top and Bottom 4 Countries.",
+  "width": 430,
+  "height": 300,
+  "config": {
+    "background": "transparent",
+    "legend": {"orient": "top-right"}
   },
+  "data": {"url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/World_Happiness_Years.csv"},
   "transform": [
     {
       "filter": {
         "field": "Country",
-        "oneOf": [
+        "oneOf":[
           "Finland",
           "Denmark",
           "Iceland",
-          "Sweden",
-          "Malawi",
           "Zimbabwe",
           "Lebanon",
           "Afghanistan"
         ]
       }
+    },
+    {
+      "filter": {
+        "field": "Year",
+        "oneOf": [2008, 2022]
+      }
     }
   ],
   "encoding": {
-    "x": {
+    "y": {
       "field": "Life Ladder",
       "type": "quantitative",
-      "title": "Happiness Score",
-      "scale": {"domain": [1, 8.5]}
+      "title": "Life Expectancy (years)",
+      "scale":{
+        "domain":[0,8.5]
+      }
     },
-    "y": {
+    "x": {
       "field": "Country",
       "type": "nominal",
+      "title": "Country",
+      "axis": {
+        "offset": 5,
+        "ticks": false,
+        "minExtent": 70,
+        "domain": false
+      },
       "sort": [
         "Finland",
         "Denmark",
         "Iceland",
-        "Sweden",
-        "Malawi",
         "Zimbabwe",
         "Lebanon",
         "Afghanistan"
       ]
-    },
-    "tooltip": [
-      {"field": "Country", "type": "nominal"},
-      {"field": "Year", "type": "nominal"},
-      {
-        "field": "Life Ladder",
-        "type": "quantitative",
-        "title": "Happiness Score",
-        "format": ".2f"
-      }
-    ]
+    }
   },
   "layer": [
     {
-      "mark": "point",
+      "mark": "line",
       "encoding": {
-        "detail": {"field": "Country", "type": "nominal"},
+        "detail": {
+          "field": "Country",
+          "type": "nominal"
+        },
         "color": {"value": "#db646f"}
       }
     },
     {
-      "transform": [
-        {"filter": {"field": "Year", "oneOf": [2006, 2022]}},
-        {
-          "aggregate": [
-            {"op": "mean", "field": "Life Ladder", "as": "mean_Life_Ladder"}
-          ],
-          "groupby": ["Country"]
-        }
-      ],
-      "mark": {"type": "point", "filled": true, "size": 150},
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
       "encoding": {
-        "y": {"field": "Country", "type": "nominal"},
-        "x": {"field": "mean_Life_Ladder"},
+        "color": {
+          "field": "Year",
+          "type": "ordinal",
+          "scale": {
+            "domain": [2008, 2022],
+            "range": ["#e6959c", "#911a24"]
+          },
+          "title": "Year"
+        },
+        "size": {"value": 100},
+        "opacity": {"value": 1},
         "tooltip": [
           {
-            "field": "mean_Life_Ladder",
+            "field": "Life Ladder",
             "type": "quantitative",
-            "title": "Mean Happiness Score"
+            "title": "Happiness Score"
           },
-          {"field": "Country", "type": "nominal"}
-        ],
-        "color": {"value": "black"}
+          {"field": "Country", "type": "nominal"},
+          {"field": "Year"}
+        ]
       }
     }
   ]

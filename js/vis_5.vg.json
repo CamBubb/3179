@@ -1,32 +1,42 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Distribution of Happiness Score by Region",
+  "width": 435,
+  "height": 295,
   "data": {
-    "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/Word_Happiness_Years.csv",
-    "format": {"parse": {"Year": "date"}}
+    "url": "https://raw.githubusercontent.com/CamBubb/3179/main/Data/Word_Happiness_Years.csv"
   },
-  "transform": [
-    {
-      "filter": {"field": "Year", "gt": "2006"}
-    }
-  ],
-  "layer": [
-    {
-      "mark": "line",
-      "encoding": {
-        "x": {"timeUnit": "year", "field": "Year", "title": "Year"},
-        "y": {"aggregate": "mean", "field": "Life Ladder",
-          "scale":{
-            "domain":[4,8]
-          }
-        },
-        "color": {
-          "field": "Broad Region",
-          "scale": {
-            "domain": ["Asia", "Europe", "Africa", "Latin America", "North America and ANZ"],
-            "range": ["#1f77b4", "#ff7f0e", "#33a02c", "#e31a1c", "#6a3d9a"]
-          }
+  "config": {
+    "background": "transparent",
+    "legend": {"orient": "bottom", 
+      "layout": {
+        "bottom": {
+          "anchor": "middle"
         }
       }
     }
-  ]
+  },
+  "mark": "bar",
+  "transform": [
+    {
+      "density": "Life Ladder",
+      "groupby": ["Broad Region"],
+      "extent": [2,8.5]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "bin": { "maxbins": 15 },
+      "field": "value",
+      "type": "quantitative",
+      "title": "Happiness Score"
+    },
+    "y": {"field": "density", "type": "quantitative", "stack": "zero"},
+    "color": {"field": "Broad Region", "type": "nominal", "scale": {"scheme": "pastel2"}},
+    "tooltip": [
+    {
+      "field": "Broad Region", 
+      "type": "nominal"}
+    ]
+  }
 }
