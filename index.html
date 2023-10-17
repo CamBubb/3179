@@ -9,7 +9,7 @@
   <!-- Import pure.css -->
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
     integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
   <!-- Google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,87 +26,183 @@
     <div class="page-container">
 
       <!-- Section 1: Map and Text -->
-      <div class="section section-title">
-        <div class="header">
-          <h1>Global Happiness [Draft]</h1>
-          <p>Happiness is defined as: Placeholder.</p>
-        </div>
+      <div class = "section section1-title">
+        <h1><center>Happiness Around the World</center></h1>
       </div>
+      
 
-      <div class = "section section-1">
-        <div class="visualization map-visualization" id="vis_map">
-        </div>
-        <div class="description">
-          <h2>Section 1 Description</h2>
-          <p>Placeholder text</p>
+      <div class="section section-1">
+        <div class="pure-g">
+          <div class="pure-u-1-1">
+            <div class="visualization map-visualization" id="vis_map"></div>
+          </div>
+        </div> 
+        <div class = "pure-g">
+          <div class = "pure-u-1-2">  
+            <div class="description"> 
+              <p>The <strong>happiness index</strong> is a <strong>comprehensive measure</strong> of overall life
+                <strong>satisfaction</strong>, or quality of life, of the population of a country.
+                This metric, which ranges from 1 - 10, is based off a range of factors such as: <br>
+                &nbsp; &nbsp; &#8226; Levels of social support <br>
+                &nbsp; &nbsp; &#8226; Individuals freedom <br>
+                &nbsp; &nbsp; &#8226; Perceptions of corruption <br>
+                &nbsp; &nbsp; &#8226; Generosity of the population <br>
+                &nbsp; &nbsp; &#8226; Level of optimism.
+                </p>
+            </div>
+          </div>
+          <div class = "pure-u-1-2">
+            <div class="description"> 
+              <p>The <strong>map above</strong> provides an overview of the current state of the Global Happiness Index,
+                <strong>as of 2022.</strong> 
+                <br> <br>
+                From this map, we can observe that <br>
+                <strong>North America, North Eastern Europe, </strong> and <strong> Oceania </strong> show 
+                <strong> highest level of happiness, with scores ranging from 7 - 8,</strong> whereas <strong>Southern/Central 
+                Africa </strong> and <strong> Eastern Asia</strong> show <strong> lowest levels of happiness, with scores below 4.</strong><br>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Section 2: Two Visualizations -->
       <div class="section section-2">
-        <div class="visualization" id="vis_2">
+        <div class = "pure-g">
+          <div class = "pure-u-1-1">
+            <div class = "section2-title">
+              <h2>Happiness Throughout Different Countries and Regions</h2>
+            </div>
+          </div>
+          <div class = "pure-u-1-2">
+            <div class = "description">
+              <p>It appears that there is a positive relationship between the <b>Log GDP per Capita</b>
+              of a country and its <b>happiness score</b>. 
+              Inversely, it does not appear that <b>confidence in governemnt</b> has any relationship
+              with <b>happiness score</b>.
+              </p>
+            </div>
+          </div>
+          <div class = "pure-u-1-2">
+            <div class = "description">
+              <p>Based on the bubble plot below, it is clear that as <b>Log GDP per Capita</b> 
+                increases (and therefore <b>happiness score</b>), the income level of countries directly increases in order from 
+              <b><FONT COLOR = '#CBBEDD'>low income</FONT></b> to <b><FONT COLOR = '#628AC0'>high income</FONT></b>.</p>
+            </div>
+          </div>
         </div>
-        <div class="visualization" id="vis_3">
+        <div class="text-and-vis pure-g">
+          <div class="pure-u-1-1">
+            <div class="visualization2" id="vis_2"></div>
+          </div>
+          
         </div>
-        <div class="description">
-          <h2>Section 2 Description</h2>
-          <p>Placeholder text</p>
+        
+        <div class="pure-g">
+          <div class="pure-u-1-2">
+            <div class="visualization3" id="vis_3">
+            </div>
+          </div>
+          <div class="pure-u-1-2">
+            <div class="visualization" id="vis_5">
+            </div>
+          </div>
+          <div class="pure-u-1-2">
+            <div class="description">
+              <p>The above ranged dot plot examines the change of Happiness Score of the
+                top three countries since <FONT COLOR = "#E6959C">2008</FONT> to <FONT COLOR = "#901A23">2022</FONT>. 
+                From this, we can see that the countries tend to have a wider change over the specified time period, 
+                whereas the top three countries have a smaller spread. <b>Finland</b> and <b>Zimbabwe</b> appear 
+                to have the smallest change in Happiness Score over the time period.
+              </p>
+            </div>
+          </div>
+          <div class="pure-u-1-2">
+            <div class="description">
+              <p> 
+                Examining the distribution of Happiness Scores over broad regions, we notice that
+                <b><FONT COLOR = "#B3E2CD">African </FONT></b>
+                countries are generally on the lower end of Happiness Scores,
+                <b><FONT COLOR = "#FDCDAB">Asian</FONT></b>
+                countries are generally surrounding the lower/middle regions of the distribution,
+                <b><FONT COLOR = "#CAD5E8">European</FONT></b>
+                countries tend to be in the middle to high portions of the distribution, which is similar to 
+                <b><FONT COLOR = "#F4CAE3">Latin American</FONT></b>
+                countries.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="section section-2">
-        <div class="visualization" id="vis_4">
+      <div class="section section-4">
+        <div class="pure-g">
+          <div class="pure-u-1-2">
+            <div class="visualization" id="vis_4">
+            </div>
+          </div>
+          <div class = "pure-u-1-2">
+            <div class="description">
+              <h2>Imapct of Variables on Happiness</h2>
+              <p>We can explore relationships between various features of a county, and its happiness score, over time. <br>
+                As of 2022:
+                <br>  <br>
+                &#8226; We can see a <b>negative relationship</b> between <b>perceptions of corruption</b> in a country 
+                and its <b>happiness score</b>. <br> <br>
+                &#8226; There is no clear relationship between <b>confidence in national governemnt 
+                </b> and <b>happiness score</b>, however we may be able to identify clustering. <br>  <br>
+                &#8226; <b>Generosity</b> shows a similar pattern to <b>confidence in national government</b>. <br>  <br>
+                &#8226; However, we see a <b>strong positive</b> relationship between 
+                <b>freedom to make life choices</b> and <b>happiness score</b>. <br>  <br>
+                &#8226; This is mirrored closely by <b>healthy life expectancy at birth</b>, 
+                <b>social support</b> AND <b>log GDP per capita</b>, as each of these variables have 
+                <b>strong positive</b> relationships with <b>happiness score</b>. <br>  <br>
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="visualization" id="vis_5">
-        </div>
-        <div class="description">
-          <h2>Section 3 Description</h2>
-          <p>Placeholder text</p>
-        </div>
+        
+        
       </div>
 
-      <!-- Section 3: Footer -->
       <div class="section section-3">
         <div class="footer">
-          <p class="small-font">Created by: Your Name - Your Student ID</p>
+          <p class="small-font">Created by: Cameron Bubb - 31495966</p>
         </div>
       </div>
     </div>
   </div>
 
-<script type="text/javascript" src="js/hw_map.vg.json"></script>
-<script type="text/javascript" src="js/hw_vis.vg.json"></script>
-<script type="text/javascript" src="js/vis_3.vg.json"></script>
-<script type="text/javascript" src="js/vis_4.vg.json"></script>
-<script type="text/javascript" src="js/vis_5.vg.json"></script>
+  <script type="text/javascript" src="js/hw_map.vg.json"></script>
+  <script type="text/javascript" src="js/hw_vis.vg.json"></script>
+  <script type="text/javascript" src="js/vis_3.vg.json"></script>
+  <script type="text/javascript" src="js/vis_4.vg.json"></script>
+  <script type="text/javascript" src="js/vis_5.vg.json"></script>
 
-<script type="text/javascript">
-  var spec1 = "js/hw_map.vg.json";
-  var spec2 = "js/hw_vis.vg.json";
-  var spec3 = "js/vis_3.vg.json";
-  var spec4 = "js/vis_4.vg.json";
-  var spec5 = "js/vis_5.vg.json";
+  <script type="text/javascript">
+    var spec1 = "js/hw_map.vg.json";
+    var spec2 = "js/hw_vis.vg.json";
+    var spec3 = "js/vis_3.vg.json";
+    var spec4 = "js/vis_4.vg.json";
+    var spec5 = "js/vis_5.vg.json";
+  
+    vegaEmbed('#vis_map', spec1, {"actions": false });
+  
+    vegaEmbed('#vis_2', spec2, {"actions": false }).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+  
+    vegaEmbed('#vis_3', spec3, {"actions": false }).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+  
+    vegaEmbed('#vis_4', spec4, {"actions": false }).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
 
-  vegaEmbed('#vis_map', spec1);
-
-  vegaEmbed('#vis_2', spec2, {"actions": false }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-  vegaEmbed('#vis_3', spec3, {"actions": true }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-  vegaEmbed('#vis_4', spec4, {"actions": true }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-
-  //vegaEmbed('#vis_5', spec5, {"actions": true }).then(function (result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  //  }).catch(console.error);
-</script>
+    vegaEmbed('#vis_5', spec5, {"actions": false }).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+  </script>
 </body>
 </html>
-
-
-
