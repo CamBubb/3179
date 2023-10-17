@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Ranged Dot Plot of Happiness for Top and Bottom 4 Countries.",
+  "title": "Ranged Dot Plot of Happiness for Top and Bottom 3 Countries.",
   "width": 430,
   "height": 300,
   "config": {
